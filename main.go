@@ -13,7 +13,7 @@ func main() {
 	maxCount := flag.Int("max", 5000, "maximum number of commits to load into the graph (0 = unlimited)")
 	cwdFile := flag.String("cwd-file", "", "write the active worktree path to this file on exit (for a cd wrapper)")
 	flag.Usage = func() {
-		fmt.Fprintf(os.Stderr, "usage: gitscope [flags] [repo-dir]\n\n")
+		fmt.Fprintf(os.Stderr, "usage: kozuemi [flags] [repo-dir]\n\n")
 		flag.PrintDefaults()
 	}
 	flag.Parse()
@@ -29,7 +29,7 @@ func main() {
 	}
 	top, err := Repo{Dir: dir}.run("rev-parse", "--show-toplevel")
 	if err != nil {
-		fmt.Fprintln(os.Stderr, "gitscope:", firstLine(err.Error()))
+		fmt.Fprintln(os.Stderr, "kozuemi:", firstLine(err.Error()))
 		os.Exit(1)
 	}
 

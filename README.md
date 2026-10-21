@@ -1,19 +1,19 @@
-# gitscope
+# kozuemi（梢見）
 
-コミットグラフを中心に据えた git TUI。
+コミットグラフを中心に据えた git TUI。ブランチやワークツリーの先端（梢）を一望し、全体の中の現在地を見失わずに切り替え・比較・操作できる。
 
-グラフは常に全 ref (`--all`) を日付順で描画し、HEAD を起点にしない。ブランチのチェックアウトやワークツリーの切り替えでは HEAD マーカー (◉) が移動するだけで、グラフの並びとスクロール位置は変わらない。
+グラフは常に全 ref (`--all`) を日付順で描画し、HEAD を起点にしない。ブランチのチェックアウトやワークツリーの切り替えでは HEAD マーカー（緑の `●`）が移動するだけで、グラフの並びとスクロール位置は変わらない。
 
 ## インストール
 
 ```sh
-go build -o gitscope . && mv gitscope ~/go/bin/   # PATH の通った場所へ
+go install .   # $GOPATH/bin（既定 ~/go/bin）に kozuemi が入る
 ```
 
 ## 使い方
 
 ```sh
-gitscope [--max N] [--cwd-file PATH] [repo-dir]
+kozuemi [--max N] [--cwd-file PATH] [repo-dir]
 ```
 
 - `--max`: グラフに読み込む最大コミット数 (既定 5000, 0 で無制限)
@@ -22,9 +22,9 @@ gitscope [--max N] [--cwd-file PATH] [repo-dir]
 TUI から親シェルのカレントディレクトリは変えられないため、ワークツリー切り替え後にそのディレクトリへ移動したい場合は次のようなラッパーを使う。
 
 ```zsh
-gs() {
+kz() {
   local f=$(mktemp)
-  gitscope --cwd-file "$f" "$@"
+  kozuemi --cwd-file "$f" "$@"
   local d=$(<"$f"); rm -f "$f"
   [[ -n $d && $d != $PWD ]] && cd "$d"
 }
@@ -63,7 +63,7 @@ lazygit と同じパネル構成・キー操作。
 | `h` `l` `←` `→` `tab` / `1`〜`5` | パネル移動 / 直接フォーカス |
 | `j` `k` / `,` `.` / `<` `>` | 移動 / ページ / 先頭・末尾 |
 | `/` `n` `N` | 検索（入力のたびに反映）/ 次 / 前。`[2]` では一覧の絞り込みになり、esc で解除 |
-| `R` | リフレッシュ（別ペインでのコミット・fetch・ファイル編集などは、gitscope にフォーカスが戻った時に自動で反映。tmux では `set -g focus-events on` が必要） |
+| `R` | リフレッシュ（別ペインでのコミット・fetch・ファイル編集などは、kozuemi にフォーカスが戻った時に自動で反映。tmux では `set -g focus-events on` が必要） |
 | `P` `p` | push（upstream 未設定なら `--set-upstream`、rejected 時は force-with-lease を確認）/ pull |
 | `m` | merge・rebase・cherry-pick の continue / abort / skip |
 | `S` | stash メニュー |

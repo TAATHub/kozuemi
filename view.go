@@ -219,7 +219,7 @@ func (m *Model) menuLines() []string {
 func (m *Model) viewHeader() string {
 	h := m.snap.Head
 	parts := []string{
-		lipgloss.NewStyle().Background(cAccent).Foreground(cBlack).Bold(true).Render(" gitscope "),
+		lipgloss.NewStyle().Background(cAccent).Foreground(cBlack).Bold(true).Render(" kozuemi "),
 	}
 	wtName := lipgloss.NewStyle().Foreground(cMagenta).Render(" (" + filepath.Base(h.Toplevel) + ")")
 	if h.Branch != "" {
@@ -713,7 +713,7 @@ func (m *Model) branchInOtherWorktree(name string) bool {
 
 // ---- help ----
 
-const helpText = `gitscope keybindings (lazygit compatible)
+const helpText = `kozuemi keybindings (lazygit compatible)
 
  Global                                       Commits [3]        
    q            quit                            enter    focus diff panel (side-by-side)

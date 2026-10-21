@@ -1,4 +1,4 @@
-module github.com/taat/gitscope
+module github.com/TAATHub/kozuemi
 
 go 1.27.2
 
