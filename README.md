@@ -7,8 +7,18 @@
 ## インストール
 
 ```sh
-go install .   # $GOPATH/bin（既定 ~/go/bin）に kozuemi が入る
+go install github.com/TAATHub/kozuemi@latest
 ```
+
+ソースからビルドする場合は clone したディレクトリで `go install .` を実行する。
+
+```sh
+git clone https://github.com/TAATHub/kozuemi.git
+cd kozuemi
+go install .
+```
+
+どちらも `$(go env GOPATH)/bin`（既定 ~/go/bin）に入る。更新も同じコマンドで行う（clone した場合は `git pull` してから `go install .`）。
 
 ## 使い方
 
