@@ -4,6 +4,10 @@
 
 グラフは常に全 ref (`--all`) を日付順で描画し、HEAD を起点にしない。ブランチのチェックアウトやワークツリーの切り替えでは HEAD マーカー（緑の `●`）が移動するだけで、グラフの並びとスクロール位置は変わらない。
 
+<p align="center">
+  <img src="docs/demo.gif" alt="kozuemi のデモ" width="800">
+</p>
+
 ## インストール
 
 ```sh
@@ -19,6 +23,10 @@ go install .
 ```
 
 どちらも `$(go env GOPATH)/bin`（既定 ~/go/bin）に入る。更新も同じコマンドで行う（clone した場合は `git pull` してから `go install .`）。
+
+## 概要
+
+![kozuemi の概要](docs/overview.png)
 
 ## 使い方
 
